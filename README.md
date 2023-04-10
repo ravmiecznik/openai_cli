@@ -2,11 +2,23 @@
 
 
 ## setup
+
+1. Access https://platform.openai.com/account/api-keys to create a token
+2. Store token in `.token` file.
+3. Configure python venv and install openai Python API and command line tools.
 ```bash
 python3 -m venv OPENAI
+source OPENAI/bin/activate
 python -m pip install openai
 pip install openai --upgrade
 ```
+
+>Having CLI for openai makes some things easier as you can simply provide some commands output to Chat.<br>
+>It is also quite simple to pass a file to a query:
+> 
+> ```chatg review this script: "$(cat chatgpt.sh)"```
+> 
+> Use qotation marks in bash shell to keep file formating.
 
 ## usage (self explained)
 
