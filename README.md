@@ -1,5 +1,14 @@
 ### OPENAI Command line
-
+>Having CLI for openai makes some things easier as you can simply provide some commands output to Chat.<br>
+>It is also quite simple to pass a file to a query:
+> 
+> ```chatg review this script: "$(cat chatgpt.sh)"```
+> 
+> Use quotation marks in bash shell to keep file formating.
+```
+~/openai$ chatg fix this sentence: my english bad is very very
+My English is very, very bad.
+```
 
 ## setup
 
@@ -12,18 +21,6 @@ source OPENAI/bin/activate
 python -m pip install openai
 pip install openai --upgrade
 ```
-
->Having CLI for openai makes some things easier as you can simply provide some commands output to Chat.<br>
->It is also quite simple to pass a file to a query:
-> 
-> ```chatg review this script: "$(cat chatgpt.sh)"```
-> 
-> Use quotation marks in bash shell to keep file formating.
-```
-~/openai$ chatg fix this sentence: my english bad is very very
-My English is very, very bad.
-```
-
 
 ## usage (self explained)
 
