@@ -18,7 +18,12 @@ pip install openai --upgrade
 > 
 > ```chatg review this script: "$(cat chatgpt.sh)"```
 > 
-> Use qotation marks in bash shell to keep file formating.
+> Use quotation marks in bash shell to keep file formating.
+```
+~/openai$ chatg fix this sentence: my english bad is very very
+My English is very, very bad.
+```
+
 
 ## usage (self explained)
 
