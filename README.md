@@ -10,6 +10,10 @@
 My English is very, very bad.
 ```
 
+>This CLI offers very basic usage but it can be tuned by API request modifications according to:
+https://platform.openai.com/docs/api-reference
+
+
 ## setup
 
 1. Access https://platform.openai.com/account/api-keys to create a token
@@ -58,7 +62,7 @@ beginning of the file (#!"usr/bin/bash").
 
 ```commandline
 
-~/openai$ chatg what is this code: "$(cat chatgpt.py)"
+~/openai$ chatsh what is this code: "$(cat chatgpt.py)"
 
 This is a Python script that uses OpenAI's Chat API to generate responses to user questions. It takes a single command line argument 
 as the input question and creates a text file with the response and timestamped name. The script loads the API key from a hidden file 
@@ -68,7 +72,7 @@ generate a response. The response is saved in a text file along with the origina
 ```
 
 ```commandline
-~/openai$ chatg find problems in "$(cat chatgpt.py)"
+~/openai$ chatsh find problems in "$(cat chatgpt.py)"
 1. API key is not securely loaded:
 The API key is currently loaded from a file named '.token', which could be compromised if someone gains access to the file system. It 
 would be better to load the key from an environment variable or secret management service.
@@ -95,7 +99,7 @@ The code lacks unit tests, making it hard to ensure that it works as intended an
 ```
 
 ```commandline
-~/openai$ chatg explain output: "$(python -c "print(4/0)" 2>&1)"
+~/openai$ chatsh explain output: "$(python -c "print(4/0)" 2>&1)"
 This is a Python error message that occurs when the code is trying to perform a division operation with a divisor of zero. In this 
 case, the error message is indicating that there is a ZeroDivisionError on line 1 of the code. The traceback is presenting the error 
 message from the most recent call in the program, which in this case is line 1. 
@@ -106,7 +110,7 @@ operation caused an issue in the code that we need to fix.
 ```
 
 ```commandline
-~/openai$ chatg check this error "$(./chatgpt.py -r 2>&1)" from script "$(cat chatgpt.py)"
+~/openai$ chatsh check this error "$(./chatgpt.py -r 2>&1)" from script "$(cat chatgpt.py)"
 The error is in the line:
 
 
@@ -128,11 +132,11 @@ help='save detailed response')
 ## Solution is to store responses with '-r' option and access it with a bash function 'last_conversation'
 
 ```commandline
-~/openai$ ./chatgpt.py -r  shortly explain what is discus fish
+~/openai$ chatgpt -r  shortly explain what is discus fish
 
 Discus fish is a type of freshwater fish that is native to the Amazon River basin in South America. They are known for their circular and flat shaped body and vibrant coloration, which can vary from yellow, blue, green, and red. Discus fish require a specific water condition, temperature, and diet to thrive, and they are often kept in aquariums as pets for their beauty and unique behaviors. They are a popular choice among experienced fish keepers due to their challenging care requirements.
 
-~/openai$ ./chatgpt.py -r elaborate more on $(last_conversation)
+~/openai$ chatgpt -r elaborate more on $(last_conversation)
 
 Discus fish are also known for their social behavior and will often form groups in the wild. They communicate with each other through a series of grunts and whistles and are capable of recognizing individual members of their species. Discus fish are also territorial and can become aggressive if they feel their space is being invaded. In the wild, they primarily feed on small invertebrates and are known for their ability to sift through sand and gravel to find food. In aquariums, they can be fed a variety of foods including flakes, pellets, and frozen or live foods. Due to their sensitive nature, it is important for owners to keep their tanks clean and maintain a stable environment. Overall, discus fish are prized for their unique beauty, social behavior, and challenging care requirements.
 
