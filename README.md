@@ -128,8 +128,9 @@ help='save detailed response')
 
 ```
 
+## Continue conversation
 ```commandline
-# docker build . | tee docker.out
+# docker build . 2>&1 | tee docker.out
 # ... some errors here...
 
 # chatgpt -r I run "docker build ." with dockerfile: "$(cat Dockerfile)" and it produces error: "$(cat docker.out)", fix my dockerfile
@@ -140,6 +141,14 @@ FROM ubuntu
 do stuff
 RUN some steps
 ... 
+
+# docker build . 2>&1 | tee docker.out
+IT FAILED
+
+# chatgpt -r I tried advice: "$(last_conversation)" but it still fails with error "$(cat docker.out)"
+# answer: The error seems to be caused by the fact that `apt-get` is not available in the base image...
+# new docker file proposal:
+# ...
 ```
 
 >The current version of the API does not support referencing a thread, but it will be added in a future update.
