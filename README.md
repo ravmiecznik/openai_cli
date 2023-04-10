@@ -27,7 +27,7 @@ My English is very, very bad.
 
 ## usage (self explained)
 
-```bash
+```commandline
 ~/openai$ source chatgpt.sh
 
 ~/openai$ chatg what is this code: "$(cat chatgpt.sh)"
@@ -38,7 +38,7 @@ beginning of the file (#!"usr/bin/bash").
 
 ```
 
-```bash
+```commandline
 
 ~/openai$ chatg what is this code: "$(cat chatgpt.py)"
 
