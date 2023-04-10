@@ -102,3 +102,17 @@ help='save detailed response')
 
 
 ```
+
+## Available API version doesn't support to refer to a thread, it will be implemented
+## Solution is to store responses with '-r' option and access it with a bash function 'last_conversation'
+
+```commandline
+~/openai$ ./chatgpt.py -r  shortly explain what is discus fish
+
+Discus fish is a type of freshwater fish that is native to the Amazon River basin in South America. They are known for their circular and flat shaped body and vibrant coloration, which can vary from yellow, blue, green, and red. Discus fish require a specific water condition, temperature, and diet to thrive, and they are often kept in aquariums as pets for their beauty and unique behaviors. They are a popular choice among experienced fish keepers due to their challenging care requirements.
+
+~/openai$ ./chatgpt.py -r elaborate more on $(last_conversation)
+
+Discus fish are also known for their social behavior and will often form groups in the wild. They communicate with each other through a series of grunts and whistles and are capable of recognizing individual members of their species. Discus fish are also territorial and can become aggressive if they feel their space is being invaded. In the wild, they primarily feed on small invertebrates and are known for their ability to sift through sand and gravel to find food. In aquariums, they can be fed a variety of foods including flakes, pellets, and frozen or live foods. Due to their sensitive nature, it is important for owners to keep their tanks clean and maintain a stable environment. Overall, discus fish are prized for their unique beauty, social behavior, and challenging care requirements.
+
+```
