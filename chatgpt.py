@@ -1,5 +1,5 @@
 #!/bin/env python
-import sys
+import os
 import openai
 import datetime
 import argparse
@@ -36,9 +36,14 @@ if __name__ == "__main__":
     resp_txt, resp_raw = main(q)
 
     if args.save_resp:
+
         now = datetime.datetime.now()
         date_string = now.strftime("%Y-%m-%d_%H_%M_%S")
-        with open(f'response{date_string}.txt', 'w') as resp:
+
+        resps_dir = "responses"
+        os.makedirs(resps_dir, exist_ok=True)
+        target_file = os.path.join(resps_dir, f'response{date_string}.txt')
+        with open(target_file, 'w') as resp:
             resp.write(f"question: '{q}'\n")
             resp.write("response:\n")
             resp.write(resp_txt)
