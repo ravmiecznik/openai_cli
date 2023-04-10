@@ -42,11 +42,14 @@ if __name__ == "__main__":
         resps_dir = "responses"
         os.makedirs(resps_dir, exist_ok=True)
         target_file = os.path.join(resps_dir, f'response{date_string}.txt')
-        with open(target_file, 'w') as resp:
+        target_file_simple = os.path.join(resps_dir, f'response_simple{date_string}.txt')
+        with open(target_file, 'w') as resp, open(target_file_simple, 'w') as resp_simple:
             resp.write(f"question: '{q}'\n")
-            resp.write("response:\n")
-            resp.write(resp_txt)
+            resp.write(f"response:{resp_txt}\n")
             resp.write('\n' + 30 * '-')
             resp.write(str(resp_raw))
 
+            resp_simple.write(f"question: {q}\n")
+            resp_simple.write(f"answer: {resp_txt}")
+    print()
     print(resp_txt)
