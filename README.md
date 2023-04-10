@@ -128,6 +128,20 @@ help='save detailed response')
 
 ```
 
+```commandline
+# docker build . | tee docker.out
+# ... some errors here...
+
+# chatgpt -r I run "docker build ." with dockerfile: "$(cat Dockerfile)" and it produces error: "$(cat docker.out)", fix my dockerfile
+# You can try modifying the Dockerfile as follows:
+
+
+FROM ubuntu
+do stuff
+RUN some steps
+... 
+```
+
 >The current version of the API does not support referencing a thread, but it will be added in a future update.
 Solution is to store responses with '-r' option and access it with a bash function 'last_conversation'
 
