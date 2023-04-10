@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export OPENAI_API_KEY=$(cat .token | tr -d '\n')
+
+export OPENAI_API_KEY=$(chatgpt --get-token)
 
 function chatg { 
 	query=\""$@\""
@@ -12,6 +13,13 @@ function chatg {
 # Access last conversation, to keep thread use ./chatgpt.py -r some question
 function last_conversation {
   echo "$(cat $(ls -tr responses/response_simple*| tail -n 1))"
+}
+
+function find_conversation {
+  keyword=$1
+  files_matching="$(grep "$keyword" -il responses/* | xargs -I {} head -c 40 {})"
+  echo $files_matching
+#  echo "$files_matching"
 }
 
 export -f chatg

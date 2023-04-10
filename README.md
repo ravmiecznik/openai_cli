@@ -15,14 +15,35 @@ My English is very, very bad.
 1. Access https://platform.openai.com/account/api-keys to create a token
 2. Store token in `.token` file.
 3. Configure python venv and install openai Python API and command line tools.
+
 ```bash
-python3 -m venv OPENAI
-source OPENAI/bin/activate
+env=OPENAI
+python3 -m venv $env
+ln -sf $PWD/chatgpt.py $PWD/$env/bin/chatgpt
+ln -sf $PWD/.token $PWD/$env/bin/.token
+source $env/bin/activate
 python -m pip install openai
 pip install openai --upgrade
 ```
 
+>`chatgpt` calls python script via link<br>
+>`chatg` calls shell script, must be sourced first
+
 ## usage (self explained)
+
+```commandline
+~/openai$ chatgpt --help
+usage: chatgpt [-h] [-r] [-t] [query [query ...]]
+
+positional arguments:
+  query            chatgpt question
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -r, --save-resp  save detailed response
+  -t, --get-token  retrieves token from .token file
+
+```
 
 ```commandline
 ~/openai$ source chatgpt.sh
