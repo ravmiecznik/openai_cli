@@ -83,3 +83,22 @@ In simpler terms, the code tried to divide a number by 0, which is impossible, a
 operation caused an issue in the code that we need to fix.
 
 ```
+
+```commandline
+~/openai$ chatg check this error "$(./chatgpt.py -r 2>&1)" from script "$(cat chatgpt.py)"
+The error is in the line:
+
+
+parser.add_argument('-r', '--save-resp', action='store true', 
+help='save detailed response')
+
+
+The correct value for the `action` argument should be 
+`'store_true'` (with an underscore), not `'store true'`. Change it 
+to:
+
+parser.add_argument('-r', '--save-resp', action='store_true', 
+help='save detailed response')
+
+
+```
