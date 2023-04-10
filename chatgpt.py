@@ -31,7 +31,6 @@ if __name__ == "__main__":
     parser.add_argument('-r', '--save-resp', action='store_true', help='save detailed response')
     parser.add_argument('query', nargs='*', help='chatgpt question')
     args = parser.parse_args()
-    # print(args.query)
     q = ' '.join(args.query)
     resp_txt, resp_raw = main(q)
 
