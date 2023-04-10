@@ -128,8 +128,8 @@ help='save detailed response')
 
 ```
 
-## The current version of the API does not support referencing a thread, but it will be added in a future update.
-## Solution is to store responses with '-r' option and access it with a bash function 'last_conversation'
+>The current version of the API does not support referencing a thread, but it will be added in a future update.
+Solution is to store responses with '-r' option and access it with a bash function 'last_conversation'
 
 ```commandline
 ~/openai$ chatgpt -r  shortly explain what is discus fish
