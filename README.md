@@ -18,17 +18,7 @@ https://platform.openai.com/docs/api-reference
 
 1. Access https://platform.openai.com/account/api-keys to create a token
 2. Store token in `.token` file.
-3. Configure python venv and install openai Python API and command line tools.
-
-```bash
-env=OPENAI
-python3 -m venv $env
-ln -sf $PWD/chatgpt.py $PWD/$env/bin/chatgpt
-ln -sf $PWD/.token $PWD/$env/bin/.token
-source $env/bin/activate
-python -m pip install openai
-pip install openai --upgrade
-```
+3. Run `./setup.sh` to configure python venv and install openai Python API and command line tools.
 
 >`chatgpt` calls python script via link<br>
 >`chatg` calls shell script, must be sourced first
