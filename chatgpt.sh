@@ -12,7 +12,19 @@ function chatsh {
 
 # Access last conversation, to keep thread use ./chatgpt.py -r some question
 function last_conversation {
-  echo "$(cat $(ls -tr responses/response_simple*| tail -n 1))"
+	arg=$1
+	ls -tr responses/response_simple* >/dev/null 2>&1
+	status=$?
+	if [ $status = 0 ]
+	then
+		last_resp=$(ls -tr responses/response_simple*| tail -n 1)
+		if [[ $arg == "pop" ]]
+		then
+			rm $last_resp
+			return
+		fi
+		echo "$(cat $last_resp)"
+	fi
 }
 
 function find_conversation {
