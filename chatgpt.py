@@ -1,8 +1,9 @@
 #!/bin/env python
 import os
 import sys
+import textwrap
 import select
-
+import shutil
 import openai
 import datetime
 import argparse
@@ -18,10 +19,10 @@ def get_token():
         return token.read().strip()
 
 
-def main(question):
+def main(question, model="gpt-3.5-turbo"):
     openai.api_key = get_token()
     resp_raw = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model=model,
         messages=[
             {"role": "user",
              "content": question,
@@ -33,13 +34,25 @@ def main(question):
     return resp_text, resp_raw
 
 
+def print_wrapped(percent=70):
+    terminal_width = shutil.get_terminal_size().columns
+    output_width = int(terminal_width * percent/100 + 0.5)
+
+    def print_w(text, *args, **kwargs):
+        for line in text.splitlines():
+            # will not break source code snippets
+            print('\n'.join(textwrap.wrap(line, width=output_width)), *args, **kwargs)
+    return print_w
+
+
+print70w = print_wrapped(70)
+#print70w = print
+
 if __name__ == "__main__":
-
     stdin_pending, _, _ = select.select([sys.stdin], [], [], 0.001)
-
     if stdin_pending:
         resp_text, resp_raw = main(sys.stdin.read())
-        print(resp_text)
+        print70w(resp_text)
 
     parser = argparse.ArgumentParser()
 
@@ -57,18 +70,17 @@ if __name__ == "__main__":
         prompt = "?> "
         print("---INTERACTIVE MODE---")
         print("'CTRL-C or 'end conversation' to stop")
-        print(f"start with '^' to refer to previous question: {prompt}^ elaborate more")
+        print(f"start with '^' to refer to previous question like :\n\t{prompt}^ elaborate more")
 
         question = input(prompt)
         while question:
             question_prev = question
             resp = main(question)[0]
-            print(f"chatgpt: {resp}")
+            print70w(f"chatgpt: {resp}")
             question = input(prompt)
             if question.startswith('^'):
                 question = question[1:]
                 question = f"In regards to question: {question_prev}\nyou answered: {resp}\n{question}"
-                print(question)
             elif question == 'end conversation':
                 break
 
@@ -92,4 +104,4 @@ if __name__ == "__main__":
             resp_simple.write(f"question: {q}\n")
             resp_simple.write(f"answer: {resp_txt}")
     print()
-    print(resp_txt)
+    print70w(resp_txt)
