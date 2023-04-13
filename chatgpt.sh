@@ -67,3 +67,8 @@ function show_record {
 export -f record
 export -f show_record
 export -f chatsh
+
+echo Use \'last_conversation\' to access last recorded conversation.
+echo Use \'record\' command to record terminal actions.
+echo \'exit\' to stop recording.
+echo Access last record by \'show_record\' command.
