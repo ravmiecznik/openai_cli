@@ -159,15 +159,66 @@ Discus fish are also known for their social behavior and will often form groups 
 ```commandline
 source chatgpt.sh
 
-record      # start recording
+record                      # start recording
 ls -ltr
-echo something > OPENAI  # trigger an error
-exit    # stop recording
+echo something > OPENAI     # trigger an error
+exit                        # stop recording
 
 ~/openai$ chatgpt how can I fix the problem "$(show_record)"
 
 There doesn't seem to be a problem that needs fixing in the given
 output. The last command ("echo empty >> OPENAI/") was invalid as
 "OPENAI" is a directory and hence cannot be used as a file.
+```
+
+## Interactive mode
+>As mentioned earlier openai doesn't support previous thread referring at the moment,
+> but it is still possible to keep a conversation thread. <br>
+> Use `chatgpt -i` to start interactive mode and '^' sign at the beginning of sentence to refer to previous conversation:
+```commandline
+~/openai$ chatgpt -i
+---INTERACTIVE MODE---
+'CTRL-C or 'end conversation' to stop
+start with '^' to refer to previous question like :
+	?> ^ elaborate more
+?> Can you simulate a Millionare game with me ?
+chatgpt: Certainly! Would you like to play the game as a contestant or as
+the host?
+?> ^I want to be a contestant
+chatgpt: Great! Here's how it works:
+
+- I will present you with a series of multiple-choice questions, each with
+four possible answers.
+- The questions will increase in difficulty as you progress through the
+game, with the potential rewards increasing as well.
+- You will have the option to use "lifelines" if you get stuck on a
+question, which will give you additional assistance in finding the correct
+answer.
+- If you answer all of the questions correctly, you will become a
+"Millionaire" and win the grand prize!
+
+Are you ready to begin? Let's get started!
+
+Question 1: What is the capital of France?
+a) Rome
+b) Madrid
+c) Paris
+d) Berlin
+
+Which answer would you like to choose?
+?> ^C
+chatgpt: ) Paris is correct! Well done, you have earned $100.
+
+Question 2: Who painted the famous artwork "The Mona Lisa"?
+a) Vincent Van Gogh
+b) Rembrandt
+c) Leonardo da Vinci
+d) Pablo Picasso
+
+Which answer would you like to choose?
+?> ^how many points did I get so far ?
+chatgpt: You have earned $100 so far for correctly answering the first
+question.
+?> 
 
 ```
