@@ -2,11 +2,11 @@
 >Having CLI for openai makes some things easier as you can simply provide some commands output to Chat.<br>
 >It is also quite simple to pass a file to a query:
 > 
-> ```chatg review this script: "$(cat chatgpt.sh)"```
+> ```chatsh review this script: "$(cat chatgpt.sh)"```
 > 
 > Use quotation marks in bash shell to keep file formating.
 ```
-~/openai$ chatg fix this sentence: my english bad is very very
+~/openai$ chatsh fix this sentence: my english bad is very very
 My English is very, very bad.
 ```
 
@@ -21,7 +21,7 @@ https://platform.openai.com/docs/api-reference
 3. Run `./setup.sh` to configure python venv and install openai Python API and command line tools.
 
 >`chatgpt` calls python script via link<br>
->`chatg` calls shell script, must be sourced first
+>`chatsh` calls shell script, must be sourced first
 
 ## usage (self explained)
 
@@ -43,7 +43,7 @@ optional arguments:
 ~/openai$ source chatgpt.sh
 
 ~/openai$ chatsh what is this code: "$(cat chatgpt.sh)"
-This code is a bash shell script that defines a chatbot function called "chatg" which uses the OpenAI GPT-3 API to generate responses 
+This code is a bash shell script that defines a chatbot function called "chatgsh" which uses the OpenAI GPT-3 API to generate responses 
 to user input. The script also exports the API key from a file named ".token" and defines the function to be used globally (-f 
 option). The prompt for the chatbot function is passed as an argument to the function. The script is executed by the bash shell at the 
 beginning of the file (#!"usr/bin/bash").
@@ -152,5 +152,22 @@ Discus fish is a type of freshwater fish that is native to the Amazon River basi
 ~/openai$ chatgpt -r elaborate more on $(last_conversation)
 
 Discus fish are also known for their social behavior and will often form groups in the wild. They communicate with each other through a series of grunts and whistles and are capable of recognizing individual members of their species. Discus fish are also territorial and can become aggressive if they feel their space is being invaded. In the wild, they primarily feed on small invertebrates and are known for their ability to sift through sand and gravel to find food. In aquariums, they can be fed a variety of foods including flakes, pellets, and frozen or live foods. Due to their sensitive nature, it is important for owners to keep their tanks clean and maintain a stable environment. Overall, discus fish are prized for their unique beauty, social behavior, and challenging care requirements.
+
+```
+
+## Record terminal
+```commandline
+source chatgpt.sh
+
+record      # start recording
+ls -ltr
+echo something > DIRECTORY  # trigger an error
+exit    # stop recording
+
+~/openai$ chatgpt how can I fix the problem "$(show_record)"
+
+There doesn't seem to be a problem that needs fixing in the given
+output. The last command ("echo empty >> OPENAI/") was invalid as
+"OPENAI" is a directory and hence cannot be used as a file.
 
 ```
