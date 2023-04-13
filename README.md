@@ -27,16 +27,16 @@ https://platform.openai.com/docs/api-reference
 
 ```commandline
 ~/openai$ chatgpt --help
-usage: chatgpt [-h] [-r] [-t] [query [query ...]]
+usage: chatgpt [-h] [-r] [-t] [-i] [query [query ...]]
 
 positional arguments:
-  query            chatgpt question
+  query              chatgpt question
 
 optional arguments:
-  -h, --help       show this help message and exit
-  -r, --save-resp  save detailed response
-  -t, --get-token  retrieves token from .token file
-
+  -h, --help         show this help message and exit
+  -r, --save-resp    save detailed response
+  -t, --get-token    retrieves token from .token file
+  -i, --interactive  interactive mode 
 ```
 
 ```commandline
