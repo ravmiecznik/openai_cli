@@ -161,7 +161,7 @@ source chatgpt.sh
 
 record      # start recording
 ls -ltr
-echo something > DIRECTORY  # trigger an error
+echo something > OPENAI  # trigger an error
 exit    # stop recording
 
 ~/openai$ chatgpt how can I fix the problem "$(show_record)"
