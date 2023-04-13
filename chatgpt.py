@@ -90,8 +90,8 @@ if __name__ == "__main__":
     if args.save_resp:
         now = datetime.datetime.now()
         date_string = now.strftime("%Y-%m-%d_%H_%M_%S")
-
-        resps_dir = "responses"
+        resps_dir = os.getenv("artifacts_base_path", ".")
+        resps_dir = os.path.join(resps_dir, "responses")
         os.makedirs(resps_dir, exist_ok=True)
         target_file = os.path.join(resps_dir, f'response{date_string}.txt')
         target_file_simple = os.path.join(resps_dir, f'response_simple{date_string}.txt')
