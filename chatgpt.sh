@@ -13,9 +13,6 @@ mkdir -p $artifacts_base_path
 mkdir -p $artifacts_base_path/responses
 
 export artifacts_base_path
-
-echo Convesration artifacts will be saved in: $artifacts_base_path
-
 export OPENAI_API_KEY=$(chatgpt --get-token)
 
 function chatsh {
@@ -64,11 +61,16 @@ function show_record {
         cat $record_file
 }
 
+
+function help_openai {
+	echo Use \'last_conversation\' to access last recorded conversation.
+	echo Use \'record\' command to record terminal actions.
+	echo \'exit\' to stop recording.
+	echo Access last record by \'show_record\' command.
+	echo Convesration artifacts will be saved in: $artifacts_base_path
+}
+
 export -f record
 export -f show_record
 export -f chatsh
-
-echo Use \'last_conversation\' to access last recorded conversation.
-echo Use \'record\' command to record terminal actions.
-echo \'exit\' to stop recording.
-echo Access last record by \'show_record\' command.
+export -f help_openai
