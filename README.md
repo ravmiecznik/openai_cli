@@ -48,6 +48,9 @@ optional arguments:
 ~openai$ Sure, here are some additional details about laser printers: ...
 ```
 
+#### TODO: add conversation browser to refer to previous conversations (use 'curses' library ?) 
+#### TODO: conversation should be saved as a file with key words in title, browser should display conversation summary
+
 ```commandline
 ~/openai$ source chatgpt.sh
 
