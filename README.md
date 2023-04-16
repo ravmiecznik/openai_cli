@@ -27,16 +27,25 @@ https://platform.openai.com/docs/api-reference
 
 ```commandline
 ~/openai$ chatgpt --help
-usage: chatgpt [-h] [-r] [-t] [-i] [query [query ...]]
+usage: chatgpt [-h] [-r] [-g] [-G] [-t] [-i] [-v] [query [query ...]]
 
 positional arguments:
-  query              chatgpt question
+  query                 chatgpt question
 
 optional arguments:
-  -h, --help         show this help message and exit
-  -r, --save-resp    save detailed response
-  -t, --get-token    retrieves token from .token file
-  -i, --interactive  interactive mode 
+  -h, --help            show this help message and exit
+  -r, --save-resp       save detailed response
+  -g, --get-last-resp   gets last response, allows to continue a conversation
+  -G, --get-last-resp-full
+                        gets last full response
+  -t, --get-token       retrieves token from .token file
+  -i, --interactive     interactive mode
+  -v, --verbose         print verbose conversation
+  
+# refer to last conversation and store results:
+~/openai$ chatgpt -r "What is a laser printer ?"
+~/openai$ chatgpt -rgv "Tell me more about it ?"
+~openai$ Sure, here are some additional details about laser printers: ...
 ```
 
 ```commandline
