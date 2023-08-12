@@ -8,13 +8,13 @@ import openai
 import datetime
 import argparse
 import json
-from pprint import pformat
+from pprint import pformat, pprint
 
 # This_Path = os.path.dirname(os.path.abspath(__file__))
 
 This_Path = os.path.dirname(os.path.abspath(__file__))
 
-Responses_dir = os.getenv("artifacts_base_path", ".")
+Responses_dir = os.getenv("artifacts_base_path", os.path.join(This_Path))
 Responses_dir = os.path.join(Responses_dir, "responses")
 os.makedirs(Responses_dir, exist_ok=True)
 
@@ -27,7 +27,8 @@ def get_token():
         return token.read().strip()
 
 
-def main(question, model="gpt-3.5-turbo"):
+def main(question, model="gpt-4"):
+    print(Responses_dir)
     openai.api_key = get_token()
     resp_raw = openai.ChatCompletion.create(
         model=model,
