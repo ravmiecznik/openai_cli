@@ -28,7 +28,6 @@ def get_token():
 
 
 def main(question, model="gpt-4"):
-    print(Responses_dir)
     openai.api_key = get_token()
     resp_raw = openai.ChatCompletion.create(
         model=model,
